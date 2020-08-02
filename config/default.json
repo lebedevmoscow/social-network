@@ -1,0 +1,6 @@
+{
+	"MONGO_URI": "mongodb+srv://admin:12345@devconnector.vzneu.mongodb.net/devConnector?retryWrites=true&w=majority",
+	"JWT_SECRET": "RANDOMSECRETKEY",
+	"GITHUB_CLIENTID": "Iv1.80825cf019f92055",
+	"GITHUB_SECRET": "ac83335f37c53ef970a0645dbdac8f974c7b58c1"
+}
