@@ -36,7 +36,7 @@ router.post(
 
 		// If users fill sent incorrect data or miss some fields
 		if (!validationErrors.isEmpty()) {
-			return res.status(200).json({ errors: validationErrors.array() })
+			return res.status(400).json({ errors: validationErrors.array() })
 		}
 
 		try {
