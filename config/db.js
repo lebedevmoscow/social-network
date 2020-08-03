@@ -14,7 +14,7 @@ const connectToDatabase = async () => {
 		})
 		console.log('Connection to Database has been successful.')
 	} catch (e) {
-		console.log(err.message)
+		console.log(e.message)
 		// Terminate the process in case if connection to database
 		// was unsuccessful.
 		process.exit(1)
