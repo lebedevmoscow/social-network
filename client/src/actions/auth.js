@@ -8,6 +8,7 @@ import {
 	LOGIN_FAIL,
 	LOGOUT,
 	CLEAR_PROFILE,
+	SET_INITIAL_PROFILE,
 } from './../actions/types'
 import { setAlert } from './alert'
 import setAuthToken from './../utils/setAuthToken'
@@ -37,10 +38,14 @@ export const register = ({ name, email, password }) => async (dispatch) => {
 
 	try {
 		const response = await axios.post('/api/users', body, config)
+		console.log('Register response', response)
 
 		dispatch({
 			type: REGISTER_SUCCESS,
 			payload: response.data,
+		})
+		dispatch({
+			type: SET_INITIAL_PROFILE,
 		})
 		dispatch(loadUser())
 	} catch (e) {
@@ -67,7 +72,6 @@ export const login = (email, password) => async (dispatch) => {
 	try {
 		const response = await axios.post('/api/auth', body, config)
 
-		console.log('res', response)
 		dispatch({
 			type: LOGIN_SUCCESS,
 			payload: response.data,
@@ -75,7 +79,6 @@ export const login = (email, password) => async (dispatch) => {
 
 		dispatch(loadUser())
 	} catch (e) {
-		console.log('e', e.response.data.errors)
 		e.response.data.errors.forEach((err) =>
 			dispatch(setAlert(err.msg, 'danger'))
 		)

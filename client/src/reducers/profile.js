@@ -3,6 +3,7 @@ import {
 	PROFILE_ERROR,
 	CLEAR_PROFILE,
 	UPDATE_PROFILE,
+	SET_INITIAL_PROFILE,
 } from '../actions/types'
 
 const initialState = {
@@ -17,11 +18,26 @@ export default function (state = initialState, action) {
 	const { type, payload } = action
 
 	switch (type) {
-		case CLEAR_PROFILE:
-		case UPDATE_PROFILE:
+		case SET_INITIAL_PROFILE:
 			return {
 				...state,
 				profile: null,
+				profiles: [],
+				repos: [],
+				loading: true,
+				error: {},
+			}
+
+		case CLEAR_PROFILE:
+			return {
+				...state,
+				profile: null,
+				repos: [],
+			}
+		case UPDATE_PROFILE:
+			return {
+				...state,
+				profile: payload,
 				repos: [],
 			}
 

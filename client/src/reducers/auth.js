@@ -6,6 +6,7 @@ import {
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
 	LOGOUT,
+	DELETE_ACCOUNT,
 } from './../actions/types'
 
 const initialState = {
@@ -19,6 +20,15 @@ export default function (state = initialState, action) {
 	const { type, payload } = action
 
 	switch (type) {
+		case DELETE_ACCOUNT:
+			localStorage.removeItem('token')
+			return {
+				...state,
+				token: null,
+				isAuthenticated: false,
+				loading: false,
+			}
+
 		case LOGOUT:
 			localStorage.removeItem('token')
 			return {

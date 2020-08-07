@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const auth = require('./../../middlewares/auth')
 const Profile = require('./../../models/Profile')
+const Post = require('./../../models/Post')
+const User = require('./../../models/User.js')
 const { check, validationResult } = require('express-validator')
 const { compare } = require('bcryptjs')
 const request = require('request')
@@ -157,7 +159,8 @@ router.get('/user/:user_id', async (req, res) => {
 
 router.delete('/', auth, async (req, res) => {
 	try {
-		// @TODO - remove user posts
+		// Removing posts
+		await Post.deleteMany({ user: req.user.id })
 
 		// Removing profile
 		await Profile.findOneAndRemove({ user: req.user.id })
