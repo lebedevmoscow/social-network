@@ -5,6 +5,7 @@ import {
 	AUTH_ERROR,
 	LOGIN_SUCCESS,
 	LOGIN_FAIL,
+	LOGOUT,
 } from './../actions/types'
 
 const initialState = {
@@ -18,6 +19,15 @@ export default function (state = initialState, action) {
 	const { type, payload } = action
 
 	switch (type) {
+		case LOGOUT:
+			localStorage.removeItem('token')
+			return {
+				...state,
+				isAuthenticated: false,
+				token: null,
+				loading: false,
+			}
+
 		case LOGIN_SUCCESS:
 			localStorage.setItem('token', payload.token)
 			return {
