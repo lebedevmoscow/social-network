@@ -1,2 +1,2 @@
-# dev-connector-MERN
+# social-network-MERN
  Simple social network for developers like Github
