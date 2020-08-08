@@ -121,7 +121,7 @@ router.post(
 
 router.get('/', async (req, res) => {
 	try {
-		let profiles = await Profile.find().populate('user', ['name, avatar'])
+		let profiles = await Profile.find().populate('user', ['name', 'avatar'])
 		res.json(profiles)
 	} catch (e) {
 		console.log('e', e.message || e)

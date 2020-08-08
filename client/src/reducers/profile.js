@@ -4,6 +4,8 @@ import {
 	CLEAR_PROFILE,
 	UPDATE_PROFILE,
 	SET_INITIAL_PROFILE,
+	GET_PROFILES,
+	GET_REPOS,
 } from '../actions/types'
 
 const initialState = {
@@ -18,6 +20,20 @@ export default function (state = initialState, action) {
 	const { type, payload } = action
 
 	switch (type) {
+		case GET_REPOS:
+			return {
+				...state,
+				loading: false,
+				repos: payload,
+			}
+
+		case GET_PROFILES:
+			return {
+				...state,
+				profiles: payload,
+				loading: false,
+			}
+
 		case SET_INITIAL_PROFILE:
 			return {
 				...state,
