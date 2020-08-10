@@ -345,7 +345,6 @@ router.get('/github/:username', async (req, res) => {
 				'user-agent': 'node.js',
 			},
 		}
-
 		request(options, (err, response, body) => {
 			if (err) console.error(error)
 

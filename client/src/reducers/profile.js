@@ -68,6 +68,7 @@ export default function (state = initialState, action) {
 		case CLEAR_PROFILE:
 			return {
 				...state,
+				profile: null,
 			}
 		case UPDATE_PROFILE:
 			return {

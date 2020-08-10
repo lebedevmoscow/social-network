@@ -7,6 +7,7 @@ import ProfileTop from './ProfileTop'
 import ProfileAbout from './ProfileAbout'
 import ProfileExperience from './ProfileExperience'
 import ProfileEducation from './ProfileEducation'
+import ProfileGithub from './ProfileGithub'
 import { getProfileById } from './../../actions/profile'
 
 const Profile = ({
@@ -69,33 +70,16 @@ const Profile = ({
 								<h4>No education credentials.</h4>
 							)}
 						</div>
+
+						{profile.githubusername && (
+							<ProfileGithub username={profile.githubusername} />
+						)}
 					</div>
 				</Fragment>
 			)}
 		</Fragment>
 	)
 }
-
-// <Fragment>
-// 					<Link to='/profiles' className='btn btn-light'>
-// 						Back to Profiles
-// 					</Link>
-// 					{auth.isAuthenticated &&
-// 						!auth.loading &&
-// 						auth.user_id === profile.user._id && (
-// 							<Link to='/edit-profile' className='btn btn-dark'>
-// 								Edit Profile
-// 							</Link>
-// 						)}
-// 				</Fragment>
-
-// {auth.isAuthenticated &&
-//     !auth.loading &&
-//     auth.user._id === profile.user._id && (
-//         <Link to='/edit-profile' className='btn btn-dark'>
-//             Edit profile
-//         </Link>
-//     )}
 
 Profile.propTypes = {
 	getProfileById: PropTypes.func.isRequired,

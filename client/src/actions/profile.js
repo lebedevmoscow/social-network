@@ -46,7 +46,6 @@ export const createProfile = (formData, history, edit = false) => async (
 				'Content-Type': 'application/json',
 			},
 		}
-
 		const response = await axios.post('/api/profile', formData, config)
 		dispatch({
 			type: GET_PROFILE,
@@ -276,6 +275,7 @@ export const getGithubRepos = (userName) => async (dispatch) => {
 	try {
 		const res = await axios.get(`/api/profile/github/${userName}`)
 
+		console.log('res', res.data)
 		dispatch({
 			type: GET_REPOS,
 			payload: res.data,
