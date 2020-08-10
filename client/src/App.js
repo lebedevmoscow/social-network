@@ -21,6 +21,7 @@ import EditProfile from './components/profile-forms/EditProfile'
 import AddExperience from './components/profile-forms/AddExperience'
 import AddEducation from './components/profile-forms/AddEducation'
 import Profiles from './components/profiles/Profiles'
+import Profile from './components/profile/Profile'
 
 import setAuthToken from './utils/setAuthToken'
 import { loadUser } from './actions/auth'
@@ -50,6 +51,11 @@ const App = () => {
 								component={Register}
 							/>
 							<Route exact path='/login' component={Login} />
+							<Route
+								exact
+								path='/profile/:id'
+								component={Profile}
+							/>
 							<Route
 								exact
 								path='/profiles'

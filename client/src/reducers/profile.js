@@ -8,6 +8,7 @@ import {
 	GET_REPOS,
 	LOAD_PROFILE,
 	LOAD_PROFILES,
+	LOAD_DEV_PROFILE,
 } from '../actions/types'
 
 const initialState = {
@@ -22,6 +23,12 @@ export default function (state = initialState, action) {
 	const { type, payload } = action
 
 	switch (type) {
+		case LOAD_DEV_PROFILE:
+			return {
+				...state,
+				loading: true,
+			}
+
 		case LOAD_PROFILES:
 			return {
 				...state,

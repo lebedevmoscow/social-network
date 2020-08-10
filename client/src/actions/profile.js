@@ -11,6 +11,7 @@ import {
 	GET_REPOS,
 	LOAD_PROFILE,
 	LOAD_PROFILES,
+	LOAD_DEV_PROFILE,
 } from './types'
 
 // Get current users profiles
@@ -249,6 +250,10 @@ export const getProfiles = () => async (dispatch) => {
 // Get profile by ID
 export const getProfileById = (userId) => async (dispatch) => {
 	try {
+		dispatch({
+			type: LOAD_DEV_PROFILE,
+		})
+
 		const res = await axios.get(`/api/profile/user/${userId}`)
 
 		dispatch({

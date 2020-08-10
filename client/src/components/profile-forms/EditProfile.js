@@ -72,7 +72,7 @@ const EditProfile = ({
 			instagram:
 				loading || !profile.social ? '' : profile.social.instagram,
 		})
-	}, [loading, getCurrentProfile])
+	}, [getCurrentProfile])
 
 	return (
 		<Fragment>
