@@ -322,6 +322,11 @@ button {
 	margin: 0 0.25rem;
 }
 
+.navbar__logout:hover {
+	color: var(--primary-color);
+	cursor: pointer;
+}
+
 .navbar a:hover {
 	color: var(--primary-color);
 }

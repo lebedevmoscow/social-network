@@ -9,11 +9,17 @@ import {
 	DELETE_ACCOUNT,
 	GET_PROFILES,
 	GET_REPOS,
+	LOAD_PROFILE,
+	LOAD_PROFILES,
 } from './types'
 
 // Get current users profiles
 export const getCurrentProfile = () => async (dispatch) => {
 	try {
+		dispatch({
+			type: LOAD_PROFILE,
+		})
+
 		const res = await axios.get('/api/profile/me')
 
 		console.log('res', res)
@@ -190,7 +196,7 @@ export const deleteEducation = (id) => async (dispatch) => {
 export const deleteAccount = () => async (dispatch) => {
 	if (window.confirm('Are you sure? This can NOT be undone!')) {
 		try {
-			const res = await axios.delete('/api/profile')
+			await axios.delete('/api/profile')
 
 			dispatch({
 				type: CLEAR_PROFILE,
@@ -214,6 +220,10 @@ export const deleteAccount = () => async (dispatch) => {
 
 // Get all profiles
 export const getProfiles = () => async (dispatch) => {
+	dispatch({
+		type: LOAD_PROFILES,
+	})
+
 	dispatch({
 		type: CLEAR_PROFILE,
 	})

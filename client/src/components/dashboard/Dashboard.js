@@ -17,7 +17,7 @@ const Dashboard = ({
 }) => {
 	useEffect(() => {
 		getCurrentProfile()
-	}, [])
+	}, [getCurrentProfile])
 
 	//return <Spinner />
 	return loading && profile === null ? (
@@ -28,7 +28,7 @@ const Dashboard = ({
 			<p className='lead'>
 				<i className='fas fa-user'></i> Welcome {user && user.name}
 			</p>
-			{profile !== null ? (
+			{profile !== null && !loading && (
 				<Fragment>
 					<DashboardActions />
 					<Experience experience={profile.experience} />
@@ -44,7 +44,8 @@ const Dashboard = ({
 						</button>
 					</div>
 				</Fragment>
-			) : (
+			)}
+			{profile === null && !loading && (
 				<Fragment>
 					<p>
 						You have not yet setup a profile, please add some info

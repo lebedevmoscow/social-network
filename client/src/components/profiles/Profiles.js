@@ -8,13 +8,12 @@ import { connect } from 'react-redux'
 const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
 	useEffect(() => {
 		getProfiles()
-	}, [])
+	}, [getProfiles])
 
 	return (
 		<Fragment>
-			{loading ? (
-				<Spinner />
-			) : (
+			{loading && <Spinner />}
+			{!loading && profiles && (
 				<Fragment>
 					<h1 className='large text-primary'>
 						<p className='lead'>
@@ -40,6 +39,37 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
 			)}
 		</Fragment>
 	)
+}
+
+{
+	/* <Fragment>
+			{loading && !profiles ? (
+				<Spinner />
+			) : (
+				<Fragment>
+					<h1 className='large text-primary'>
+						<p className='lead'>
+							<i className='fab fa-connectdevelop'></i> Browse and
+							connect with developers
+						</p>
+					</h1>
+					<div className='profiles'>
+						{profiles.length > 0 ? (
+							profiles.map((profile) => {
+								return (
+									<ProfileItem
+										key={profile._id}
+										profile={profile}
+									/>
+								)
+							})
+						) : (
+							<h4>No profiles found...</h4>
+						)}
+					</div>
+				</Fragment>
+			)}
+		</Fragment> */
 }
 
 Profiles.propTypes = {
