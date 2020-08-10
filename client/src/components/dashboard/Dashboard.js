@@ -28,7 +28,7 @@ const Dashboard = ({
 			<p className='lead'>
 				<i className='fas fa-user'></i> Welcome {user && user.name}
 			</p>
-			{profile !== null && !loading && (
+			{profile !== null ? (
 				<Fragment>
 					<DashboardActions />
 					<Experience experience={profile.experience} />
@@ -44,8 +44,7 @@ const Dashboard = ({
 						</button>
 					</div>
 				</Fragment>
-			)}
-			{profile === null && !loading && (
+			) : (
 				<Fragment>
 					<p>
 						You have not yet setup a profile, please add some info
