@@ -22,6 +22,8 @@ import AddExperience from './components/profile-forms/AddExperience'
 import AddEducation from './components/profile-forms/AddEducation'
 import Profiles from './components/profiles/Profiles'
 import Profile from './components/profile/Profile'
+import Posts from './components/posts/Posts'
+import Post from './components/post/Post'
 
 import setAuthToken from './utils/setAuthToken'
 import { loadUser } from './actions/auth'
@@ -56,6 +58,7 @@ const App = () => {
 								path='/profile/:id'
 								component={Profile}
 							/>
+
 							<Route
 								exact
 								path='/profiles'
@@ -66,6 +69,12 @@ const App = () => {
 								path='/dashboard'
 								component={Dashboard}
 							/>
+							<PrivateRoute
+								exact
+								path='/posts/:id'
+								component={Post}
+							/>
+
 							<PrivateRoute
 								exact
 								path='/create-profile'
@@ -85,6 +94,11 @@ const App = () => {
 								exact
 								path='/add-education'
 								component={AddEducation}
+							/>
+							<PrivateRoute
+								exact
+								path='/posts'
+								component={Posts}
 							/>
 						</section>
 					</Switch>
